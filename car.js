@@ -16,6 +16,10 @@ class Car {
   }
 
   update() {
+    this.#move();
+  }
+
+  #move() {
     if (this.controls.forward) this.speed += this.acceleration;
     if (this.controls.reverse) this.speed -= this.acceleration;
 
@@ -37,15 +41,15 @@ class Car {
     this.y -= Math.cos(this.angle) * this.speed;
   }
 
-  draw(context) {
-    context.save();
-    context.translate(this.x, this.y);
-    context.rotate(-this.angle);
+  draw(ctx) {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(-this.angle);
 
-    context.beginPath();
-    context.rect(-this.width / 2, -this.height / 2, this.width, this.height);
-    context.fill();
+    ctx.beginPath();
+    ctx.rect(-this.width / 2, -this.height / 2, this.width, this.height);
+    ctx.fill();
 
-    context.restore();
+    ctx.restore();
   }
 }
